@@ -1,6 +1,10 @@
 <template>
   <div :class="$style.wrapper">
     <label :for="`input-${id}`" :class="$style.label">{{ label }}</label>
+    <span v-if="error" :class="$style.error">
+      <img src="@/assets/warning.svg" alt="warning icon">
+      {{ error }}
+    </span>
     <input v-bind="$attrs" :id="`input-${id}`" v-model="inputValue" :class="$style.input">
   </div>
 </template>
@@ -19,7 +23,11 @@ export default {
     label: {
       type: String,
       required: true,
-    }
+    },
+    error: {
+      type: String,
+      default: null,
+    },
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
@@ -64,6 +72,11 @@ export default {
 .input:focus {
   border-color: $primary;
   border-radius: 8px;
+}
+
+.error {
+  margin: $spacing * 4;
+  color: $error;
 }
 
 .label {
