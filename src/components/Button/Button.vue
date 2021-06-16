@@ -7,7 +7,6 @@
 <script>
 export default {
   name: 'Button',
-  emits: ['click'],
   props: {
     disabled: {
       type: Boolean,
@@ -17,7 +16,8 @@ export default {
       type: Boolean,
       default: false,
     },
-  }
+  },
+  emits: ['click']
 }
 </script>
 
@@ -25,7 +25,7 @@ export default {
 .button {
   color: $white;
   background-color: $primary-dark;
-  padding: 8px 0;
+  padding: $spacing * 2 0;
   border: 1px solid $secondary-lighter;
   border-radius: 8px;
   min-width: 240px;

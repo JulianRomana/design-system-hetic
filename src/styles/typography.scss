@@ -1,6 +1,6 @@
 @mixin typo-bold-title {
   font-weight: bold;
-  font-size: 34px;
+  font-size: 32px;
 }
 @mixin typo-bold-title-small {
   font-weight: bold;
@@ -11,17 +11,8 @@
   font-size: 34px;
 }
 
-@mixin typo-paragraph {
-  font-size: 16px;
-}
-
 @mixin typo-bold-paragraph {
-  font-size: 16px;
   font-weight: bold;
-}
-
-@mixin typo-small-paragraph {
-  font-size: 16px;
 }
 
 @mixin typo-label {
@@ -31,5 +22,4 @@
 
 @mixin typo-cta {
   font-weight: bolder;
-  font-size: 16px;
 }

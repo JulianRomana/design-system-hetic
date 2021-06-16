@@ -3,22 +3,27 @@
     <h1 :class="$style.title">Sign up</h1>
     <span :class="$style.signin"> 
       Already have an account ?
-      <TextLink is-blue to="signin">Sign in</TextLink>
+      <TextLink to="signin">Log in</TextLink>
     </span>
-    <Input 
-      v-model="email" 
-      label="Email" 
-      placeholder="mail@mail.com" 
-      type="email"
-      :class="$style.passwordEmail" 
-    />
-    <Input 
-      v-model="password" 
-      label="Password" 
-      type="password" 
-      placeholder="*******"
-    />
-    <Button :class="$style.button"> Signup </Button>
+    <div :class="[$style.input, $style.passwordEmail]">
+      <Input 
+        v-model="email"
+        label="Email"
+        placeholder="mail@mail.com"
+        type="email"
+      />
+    </div>
+    <div :class="$style.input">
+      <Input 
+        v-model="password" 
+        label="Password" 
+        placeholder="*******" 
+        type="password" 
+      />
+    </div>
+    <Button :class="$style.button"> 
+      Sign up 
+    </Button>
   </div>
 </template>
 
@@ -56,18 +61,24 @@ export default {
   @include typo-bold-title;
 }
 
-.passwordEmail {
-  margin-bottom: 21px;
-}
-
 .signin {
   @include typo-bold-title-small;
-  margin: 30px 0 34px;
+  margin: $spacing * 3 0 $spacing * 5;
+}
+
+
+.input {
+  width: 100%;
+  max-width: 230px;
+}
+
+.passwordEmail {
+  width: 100%;
+  margin-bottom: $spacing * 4;
 }
 
 .button {
-  margin-top: 125px;
-  align-self: flex-end;
+  margin-top: $spacing * 26;
 }
 
 </style>

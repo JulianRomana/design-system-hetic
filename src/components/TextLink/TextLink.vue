@@ -2,8 +2,8 @@
   <router-link :to="to" 
     :class="[
       $style.link, 
-      isBlue && $style.isBlue, 
-      isBold && $style.bold
+      color && $style[color], 
+      large && $style.large
     ]"
   >
     <slot />
@@ -19,29 +19,29 @@ export default {
       type: [Object, String],
       required: true,
     },
-    isBlue: {
-      type: Boolean,
-      default: false,
+    color: {
+      type: String,
+      default: 'blue',
     },
-    isBold: {
+    large: {
       type: Boolean,
       default: false,
     }
   },
-
 }
 </script>
 
 <style lang="scss" module>
 .link {
-  color: $neutral;
+  color: $primary-dark;
 }
 
-.isBlue {
-  color: $primary-dark;
+.link:hover,
+.link:focus {
+  color: $primary;
 }
-.isBold {
-  color: $primary-dark;
+
+.large {
   @include typo-bold-title-small;
 }
 </style>

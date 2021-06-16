@@ -1,7 +1,7 @@
 <template>
   <div :class="$style.wrapper">
     <label :for="`input-${id}`" :class="$style.label">{{ label }}</label>
-    <input v-model="inputValue" v-bind="$attrs" :id="`input-${id}`" :class="$style.input">
+    <input v-bind="$attrs" :id="`input-${id}`" v-model="inputValue" :class="$style.input">
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
         return props.modelValue
       },
       set(val) {
-        emit('modelValue', val)
+        emit('update:modelValue', val)
       }
     })
 
@@ -44,25 +44,30 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
+  max-width: 330px;
 }
 
 .input {
-  padding: 11px 16px;
+  padding: $spacing * 3 $spacing * 4;
   border-radius: 8px;
   border: 1px solid $neutral-light;
+  outline: none;
   color: $black;
-  width: 330px;
+  width: 100%;
 }
+
 .input::placeholder {
   color: $neutral-light;
 }
 
 .input:focus {
   border-color: $primary;
+  border-radius: 8px;
 }
 
 .label {
   @include typo-label;
-  margin: 0 0 10px 16px;
+  margin: 0 0 $spacing * 4 $spacing * 4;
 }
 </style>
