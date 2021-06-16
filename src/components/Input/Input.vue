@@ -1,12 +1,13 @@
 <template>
-  <div>
-    <label for="input" :class="$style.label">{{ label }}</label>
-    <input v-model="inputValue" v-bind="$attr" id="input" :class="$style.input">
+  <div :class="$style.wrapper">
+    <label :for="`input-${id}`" :class="$style.label">{{ label }}</label>
+    <input v-model="inputValue" v-bind="$attrs" :id="`input-${id}`" :class="$style.input">
   </div>
 </template>
 
 <script>
 import { computed } from 'vue'
+import { v4 as uuid } from 'uuid'
 
 export default {
   name: 'Input',
@@ -31,17 +32,26 @@ export default {
       }
     })
 
-    return { inputValue }
+    const id = uuid()
+
+    return { inputValue, id }
   }
 }
 </script>
 
 <style lang="scss" module>
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .input {
-  padding: 12px 16px;
+  padding: 11px 16px;
   border-radius: 8px;
   border: 1px solid $neutral-light;
   color: $black;
+  width: 330px;
 }
 .input::placeholder {
   color: $neutral-light;
@@ -52,7 +62,7 @@ export default {
 }
 
 .label {
-  font-size: 14px;
-  color: $black;
+  @include typo-label;
+  margin: 0 0 10px 16px;
 }
-</style>v
+</style>

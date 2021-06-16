@@ -1,5 +1,5 @@
 <template>
-  <button :class="[$style.button, disabled && $stylev]" @click="$emit('click')">
+  <button :class="[$style.button, disabled && $style.isDisabled]" @click="$emit('click')">
     <slot />
   </button>
 </template>
@@ -11,11 +11,11 @@ export default {
   props: {
     disabled: {
       type: Boolean,
-      required: true,
+      default: false,
     },
     isLoading: {
       type: Boolean,
-      required: true,
+      default: false,
     },
   }
 }
@@ -29,6 +29,8 @@ export default {
   border: 1px solid $secondary-lighter;
   border-radius: 8px;
   min-width: 240px;
+
+  @include typo-cta;
 }
 
 .button:focus, 
